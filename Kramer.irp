@@ -1,0 +1,6 @@
+Device=240
+Function=0..255
+Frequency=38462
+Zero=-1m,1m
+One=-1m,2m
+Form=4m,D:8,-2m,4500u,F:8,-33m

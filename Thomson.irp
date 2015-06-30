@@ -1,0 +1,11 @@
+Device=2
+Function=0..63
+
+Protocol=Thomson
+Frequency=33000
+Time Base=500
+Zero=1,-4
+One=1,-9
+Suffix=1
+Message Time=80m
+Form=;D:4,T:1,D:1:5,F:6,1

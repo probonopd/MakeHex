@@ -1,0 +1,13 @@
+'I don't know the real Device/Function split.
+'I pretend it is 5 to 8 to make IRPanels easier to use
+Device=12
+Function=0..255
+
+Protocol=Furby
+Frequency=40000
+Time Base=125
+Zero=1,-1,1,-5
+One=1,-1,1,-13
+Suffix=1,-1,1,-890
+Form=;D:5,F:8,_
+

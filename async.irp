@@ -1,0 +1,13 @@
+Device=0
+Function=0..9
+
+Protocol=Async
+Frequency=43600
+Time Base=833         '1200 baud
+Zero=1
+One=-1
+Prefix=1,-9,1
+Suffix=-1,1,-9
+First Bit=LSB
+Form=*,1:8,1:2,D:8,1:2,F:8,1:2,F:8,1:2,1:8,_
+

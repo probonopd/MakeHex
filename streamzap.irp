@@ -1,0 +1,13 @@
+Device=2
+Function=0..127
+Define T=0
+
+Frequency=59000
+Time Base=889
+
+Zero=1,-1
+One=-1,1
+Message Time=114
+First Bit=MSB
+Form=;1:1,~F:1:6,T:1,D:6,F:6
+

@@ -1,0 +1,12 @@
+Device=17.20
+Function=0..255
+Define M=6
+Define T=1
+Frequency=36000
+Time Base=444
+Message Time=106m
+Zero=-1,1
+One=1,-1
+First Bit=MSB
+Form=;6,-2,1:1,M:3,-2,2,128:8,S:8,T:1,D:7,F:8
+

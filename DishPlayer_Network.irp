@@ -1,0 +1,10 @@
+Device=0.0
+Function=0..63
+
+Protocol=DishPlayer_Network
+Frequency=57600
+Time Base=410
+Zero=1,-7
+One=1,-4
+Suffix=1,-15
+Form=_;F:-6,S:5,D:5,_

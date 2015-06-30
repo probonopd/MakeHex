@@ -1,0 +1,13 @@
+Device=5
+Function=0..127
+
+Protocol=RC5
+Frequency=36000
+Time Base=889         '888.89 = 32 cycles at 36Khz
+Message Time=128      '128 times TimeBase
+Zero=1,-1
+One=-1,1
+Prefix=1              'Officially -1,1 but starting with off is silly
+First Bit=MSB
+Form=;*,~F:1:6,1:1,D:5,F:6
+

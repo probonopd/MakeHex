@@ -1,0 +1,17 @@
+Device=128.3972
+Function=0..255
+Define M=6
+Define L=32
+Define T=0
+
+Protocol=RC6
+Frequency=36000
+Time Base=444
+Message Time=107m
+Zero=-1,1
+One=1,-1
+Prefix=6,-2,1,-1
+First Bit=MSB
+Default S=0
+Form=;*,M:3,(4*T-2),(2-4*T),D:8,S:(L-16),F:8
+

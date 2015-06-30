@@ -1,0 +1,12 @@
+Device=0
+Function=0..127
+
+Protocol=Blaupunkt
+Frequency=30500
+Time Base=500
+Zero=-1,1
+One=1,-1
+Prefix=1,-5
+Suffix=-27
+Form=*,1023:10,_;*,1:1,F:7,D:2,_
+

@@ -1,0 +1,9 @@
+Device=7
+Function=0..63
+Define T=0
+Frequency=36400
+Zero=170,-5580
+One=170,-8440
+MESSAGETIME=138000
+First Bit=MSB
+Form=;1:1,T:1,D:3,F:6,170

@@ -1,0 +1,25 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\.irp]
+@="irp_auto_file"
+
+[HKEY_CLASSES_ROOT\irp_auto_file]
+
+
+[HKEY_CLASSES_ROOT\irp_auto_file\shell]
+@="makehex"
+
+[HKEY_CLASSES_ROOT\irp_auto_file\shell\edit]
+@="&Edit"
+[HKEY_CLASSES_ROOT\irp_auto_file\shell\edit\command]
+@="C:\\WINDOWS\\notepad.exe \"%1\""
+
+[HKEY_CLASSES_ROOT\irp_auto_file\shell\makehex]
+@="MakeHex"
+[HKEY_CLASSES_ROOT\irp_auto_file\shell\makehex\command]
+@="C:\\IR\\MakeHex\\release\\MakeHex.exe \"%1\""
+
+[HKEY_CLASSES_ROOT\irp_auto_file\shell\makehex2]
+@="MakeHex-&H"
+[HKEY_CLASSES_ROOT\irp_auto_file\shell\makehex2\command]
+@="C:\\IR\\MakeHex\\release\\MakeHex.exe -h \"%1\""

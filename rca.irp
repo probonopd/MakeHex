@@ -1,0 +1,58 @@
+Device=13
+Function=0..255
+
+Protocol=RCA
+Frequency=58000
+Time Base=460
+Zero=1,-2
+One=1,-4
+Prefix=8,-8
+Suffix=1,-15
+First Bit=MSB
+Form=;*,D:4,F:8,~D:4,~F:8,_
+
+' Devices
+'   4           CBL0855
+'   5     DVD   DVD0522
+'   7     DSS   CBL0143, CBL0566
+'   8     CD    CD0053
+'  11           RCV0056
+'  12     RCV   RCV054
+'  13     VCR   VCR0202
+'  14     VCR   VCR0060
+'  15     TV    TV0047
+
+' Keys
+'    5     Ant
+'    6     Clear
+'    8     Menu
+'   11     Tracking
+'   12     Freeze
+'   18     Memory
+'   20     PIP Move
+'   21     Play
+'   23     Record
+'   24     Setup
+'   31     Stop
+'   36     Add/Delete
+'   42     Power toggle
+'   44     Chan-
+'   45     Chan+
+'   46     Vol-
+'   47     Vol+
+'   48-57  0 - 9
+'   58     On
+'   59     Off
+'   60     Info  /  Display
+'   63     Mute
+'   64     Eject
+'   70     Speed
+'   71     Input
+'   97     Input  /  Who
+'  100     -
+'  101     +     
+'  147     Fetch
+'  195     PIP Swap
+'  208     Time Srch
+'  225     Audio
+'  226     Video

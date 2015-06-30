@@ -1,0 +1,11 @@
+Device=50
+Function=0..63
+
+Protocol=EMERSON
+Frequency=36700
+Time Base=872
+Zero=1,-1
+One=1,-3
+Prefix=4,-4
+Suffix=1,-39
+Form=;*,D:6,F:6,~D:6,~F:6,_

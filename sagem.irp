@@ -1,0 +1,9 @@
+Device=5.0
+Function=0..256
+Frequency=56000
+Time Base=250         '14 cycles at 56Khz
+Zero=-1,1
+One=1,-1
+First Bit=MSB
+Form=1:1,D:6,S:7,0:1,F:8,-350;1:1,D:6,S:7,1:1,F:8,-350
+

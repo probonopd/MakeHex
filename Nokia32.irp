@@ -1,0 +1,12 @@
+Device=33.160
+Function=0..255
+Define X=38
+Default S=0
+Protocol=Nokia32
+Frequency=36000
+First Bit=MSB
+Zero=164,-276
+One=164,-445
+TWO=164,-614
+THREE=164,-783
+Form=;412,-276,D:8,S:8,X:8,F:8,164,^100m

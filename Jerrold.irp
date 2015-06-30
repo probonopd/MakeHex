@@ -1,0 +1,9 @@
+Function=0..31
+'Device= No Device code in this protocol
+
+Protocol=Jerrold
+Frequency=0
+Zero=44,-7500
+One=44,-11000
+Suffix=44,-22500
+Form=;F:5,_

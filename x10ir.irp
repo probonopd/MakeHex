@@ -1,0 +1,10 @@
+Function=0..31
+
+Protocol=X10IR
+Frequency=40000
+Time Base=650
+One=7,-7
+Zero=2,-13
+Form=;*,F:5,~F:5,_
+Prefix=8,-8
+suffix=23,-8

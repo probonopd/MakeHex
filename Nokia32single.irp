@@ -1,0 +1,30 @@
+' This form of the Nokia32 protocol is used for short key presses (single action)
+' by some devices.
+'
+' The Device, Subdevice and X values must all match those from the decode.
+' If the original learn was a short enough press then it would decode as two
+' seperate Nokia32 signals that differ only in their X values (same device,
+' subdevice and function), and those X values differ by exactly 128.
+' In that case, the X used here must be the X from the first part of the
+' decode.
+'
+' If a learn of a very short original press does not fit the above description
+' then this is the wrong .irp file.
+'
+' A single Pronto Hex string cannot represent both the short press and medium to
+' long press range of this protocol.  This .irp file represents only short presses
+' and the Pronto Hex will act like a short press regardless of actual press
+' duration.  The regular Nokia32.irp file can be used for non short presses and
+' can acceptably reproduce the behavior of medimum to long presses, but can't do
+' short presses.
+
+Device=33.160
+Function=0..255
+Define X=38
+Frequency=36000
+First Bit=MSB
+Zero=164,-276
+One=164,-445
+TWO=164,-614
+THREE=164,-783
+Form=412,-276,D:8,S:8,X:8,F:8,164,^100m,412,-276,D:8,S:8,(X+128):8,F:8,164,-10m

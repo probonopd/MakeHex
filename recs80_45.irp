@@ -1,0 +1,9 @@
+Device=5
+Function=0..63
+Define T=0
+Frequency=38000
+Zero=170,-4900
+One=170,-7425
+MESSAGETIME=121000
+First Bit=MSB
+Form=;1:1,T:1,D:3,F:6,170

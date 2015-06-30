@@ -1,0 +1,14 @@
+Device=0
+Function=0..255
+
+Protocol=G.I.4dtv
+Frequency=37700
+Time Base=992
+Zero=1,-1
+One=1,-3
+Prefix=5,-2
+SUFFIX=1,-60
+Define B=D*64+F
+Define C=B^B*2^B*4^B*16^B*64^B*128^B*1024
+Form=;*,B:8,C:1:10,C:3:7,_
+

@@ -1,0 +1,11 @@
+Device=26.98
+Function=0..127
+
+Protocol=Sony20
+Frequency=40000
+Time Base=600
+One=2,-1
+Zero=1,-1
+Prefix=4,-1
+Message Time=45m
+Form=;*,f:7,d:5,s:8

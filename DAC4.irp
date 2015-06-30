@@ -1,0 +1,11 @@
+Device=79
+Function=0..255
+Frequency=38000
+Zero=500,-1000
+One=500,-500
+define X=(D+F)^1
+define Y=(1+D+F)^1
+First Bit=MSB
+Form=7000,-2800,0:1,D:8,F:8,X:8,500,-60m;7000,-2800,1:1,D:8,F:8,Y:8,500,-60m
+
+' http://www.remotecentral.com/cgi-bin/mboard/rc-discrete/thread.cgi?3945,2#36

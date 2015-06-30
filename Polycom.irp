@@ -1,0 +1,11 @@
+Device=202
+Function=3..60
+
+Protocol=Polycom
+Frequency=38740
+
+Zero=880,-1200
+One=580,-880
+Prefix=2600,-2600
+Suffix=580,-60000
+Form=*,D:-8,F:-6,0:2,_,*,D:-8,3:-8,_

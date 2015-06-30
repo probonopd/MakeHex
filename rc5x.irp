@@ -1,0 +1,12 @@
+Device=16.12
+Function=0..2
+Define T=0
+Protocol=RC5x
+Frequency=36000
+Time Base=889         '888.89 = 32 cycles at 36Khz
+Message Time=128      '128 times TimeBase
+Zero=1,-1
+One=-1,1
+First Bit=MSB
+Form=;1,~S:1:6,T:1,D:5,-4,S:6,F:6
+
