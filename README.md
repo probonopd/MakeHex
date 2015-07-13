@@ -7,15 +7,17 @@ See the readme file for more information.
 
 ## License
 
-ReadMe for MakeHex version 4.12  Copyright 2005 John S. Fine
+From the ReadMe for MakeHex version 4.12:
+
+Copyright 2005 John S. Fine
 
 You may use, copy, modify and/or distribute this program for private or
 commercial use provided that:
 
-1)  You do not hold me responsible for any damage or negative consequences
+1) You do not hold me responsible for any damage or negative consequences
 resulting from those activities.
 
-2)  You include this copyright notice and disclaimer in any copy of any part
+2) You include this copyright notice and disclaimer in any copy of any part
 or all of this program.
 
 I do not provide any warranty of the correctness, safety, or suitibility of
