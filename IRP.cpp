@@ -337,6 +337,62 @@ void IRP::generate(FILE *OutFile)
 	fprintf(OutFile, "\n");
 }
 
+void IRP::generate(int *s, int *r, float *raw)
+{
+	m_hex.clear();
+	m_cumulative=0.0;
+    m_pendingBits = (m_msb ? 1 : m_bitGroup);
+	int Single = genHex(m_form);
+    if (m_cumulative<m_messageTime)
+		genHex(m_cumulative - m_messageTime);
+    if (m_hex.size() & 1)
+        genHex(-1.0);
+    if (Single < 0)
+        Single = m_hex.size();
+    Single >>= 1;
+
+	int unit;
+	if (m_frequency)
+	{
+//		printf("0000");
+		unit = floor(4145146. / m_frequency + 0.5);
+	}
+	else
+	{
+//		printf("0100");
+		float mn = m_hex[0];
+		for (int nIndex=1; nIndex<m_hex.size(); nIndex++)
+			if (mn > m_hex[nIndex])
+				mn = m_hex[nIndex];
+		unit = 4.145146*.125 * mn + 0.5;
+		unit &= -2;
+	}
+    if (unit <= 0)
+        unit = 1;
+//	printf(" %04X %04X %04X", unit, Single, m_hex.size()/2 - Single);
+	for (int nIndex=0; nIndex<m_hex.size(); nIndex+=2)
+	{
+		raw[nIndex] = m_hex[nIndex];
+		raw[nIndex + 1] = m_hex[nIndex + 1];
+        int v1 = floor( m_hex[nIndex]*4.145146/unit+0.5 );
+        if ( v1 == 0 )
+            v1 = 1;
+        if ( v1 > 0xFFFF )
+            v1 = 0xFFFF;
+        int v2 = floor( (m_hex[nIndex]+m_hex[nIndex+1])*4.145146/unit+0.5 ) - v1;
+        if ( v2 == 0 )
+            v2 = 1;
+        if ( v2 > 0xFFFF )
+            v2 = 0xFFFF;
+//		printf(" %04X %04X", v1, v2);
+	}
+//	printf("\n");
+	
+	*s = Single;
+	*r = m_hex.size()/2 - Single;
+	return;
+}
+
 int IRP::genHex(char *Pattern)
 {
 	int Result = -1;

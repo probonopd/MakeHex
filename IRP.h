@@ -46,6 +46,7 @@ public:
 	bool readIrpFile(FILE *InFile);
 	void writeHex(FILE *OutFile);
 	void generate(FILE *OutFile);
+	void generate(int *s, int *r, float *out);
 	int genHex(char *Pattern);
 	void genHex(std::vector<float>& Sequence);
     void genHex(float number);
