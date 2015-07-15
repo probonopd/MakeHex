@@ -23,19 +23,16 @@
 int main(int argc, char** argv)
 {
 
-	if (argc != 5)
+	if (argc != 5 && argc != 7)
 	{
+usage:
 		printf("Usage: encodeir <irpfile> <device> <subdevice> <function>\n");
+		printf("For rc6-M-L.irp, additional arguments M & L are also required.\n");
 		return -1;
 	}
 
-	// Arguments
-	char *irpfile = argv[1];
-	int device = atoi(argv[2]);
-	int subdevice = atoi(argv[3]);
-	int obc = atoi(argv[4]);
-
 	// Parse IRP file
+	char *irpfile = argv[1];
 	FILE *InFile = fopen(irpfile, "r");
 	if (!InFile)
 	{
@@ -53,14 +50,20 @@ int main(int argc, char** argv)
 	// Encode
 	int s, r;
 	float seq[1024], p;
-	Irp.m_value['D' - 'A'] = device;
-	Irp.m_value['S' - 'A'] = subdevice;
-	Irp.m_value['F' - 'A'] = obc;
+	Irp.m_value['D' - 'A'] = atoi(argv[2]);
+	Irp.m_value['S' - 'A'] = atoi(argv[3]);
+	Irp.m_value['F' - 'A'] = atoi(argv[4]);
 	Irp.m_value['N' - 'A'] = -1;
+	// Special hangling for rc6-M-L.irp
+	if (strcmp(irpfile, "rc6-M-L.irp") == 0) {
+		if (argc != 7)
+			goto usage;
+		Irp.m_value['M' - 'A'] = atoi(argv[5]);
+		Irp.m_value['L' - 'A'] = atoi(argv[6]);
+	}
 	Irp.generate(&s, &r, seq);
 
 	// Output
-	p = 1000000. / Irp.m_frequency;
 	for (int i = 0; i < 2 *(s + r); i++)
 		printf ("%s%g", i?" ":"", seq[i]);
 	printf ("\n");
