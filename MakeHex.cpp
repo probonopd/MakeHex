@@ -58,7 +58,7 @@ usage:
 
 	if (! Irp.readIrpFile(InFile) )
 	{
-		printf("IRP file \"%s\" not processed\n");
+		printf("IRP file not processed\n");
 		return -1;
 	}
 

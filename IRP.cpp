@@ -61,7 +61,7 @@ unsigned int reverse(unsigned int Number)
 	return (Number>>16) + (Number<<16);
 }
 
-bool IRP::match(char *master)
+bool IRP::match(const char *master)
 {
 	int len = strlen(master);
 	m_next = m_bufr+len;
@@ -207,7 +207,7 @@ bool IRP::readIrpFile(FILE *InFile)
 		|| m_digits[0] == 0
 		|| m_digits[1] == 0
 		|| m_functions[0] == -1
-		|| m_functions[2] >= 0 && m_functions[2] != m_functions[0] && m_functions[3] != m_functions[1]
+		|| ( m_functions[2] >= 0 && m_functions[2] != m_functions[0] && m_functions[3] != m_functions[1] )
 		)
 	{
 		return false;
@@ -319,7 +319,7 @@ void IRP::generate(FILE *OutFile)
 	}
     if (unit <= 0)
         unit = 1;
-	fprintf(OutFile, " %04X %04X %04X", unit, Single, m_hex.size()/2 - Single);
+	fprintf(OutFile, " %04X %04X %04lX", unit, Single, m_hex.size()/2 - Single);
 	for (int nIndex=0; nIndex<m_hex.size(); nIndex+=2)
 	{
         int v1 = floor( m_hex[nIndex]*4.145146/unit+0.5 );

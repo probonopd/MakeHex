@@ -80,7 +80,7 @@ public:
 	std::vector<float> m_hex;
 
 	// Helper for reading an Irp file
-	bool match(char *master);
+	bool match(const char *master);
 	void Parse(std::vector<float> &result);
 	char *copy();
 	void getPair(int *result);

@@ -1,7 +1,16 @@
-all: encodeir
+all: encodeir makehex
 
-MakeHex: MakeHex.cpp IRP.cpp
-	g++ -o MakeHex $?
+clean:
+	rm *.o makehex encodeir
 
-encodeir: EncodeIR.cpp IRP.cpp
-	g++ -o encodeir $?
+makehex:
+	g++ -c MakeHex.cpp
+	g++ -c IRP.cpp
+	g++ -omakehex MakeHex.o IRP.o
+	strip makehex
+
+encodeir:
+	g++ -c EncodeIR.cpp
+	g++ -c IRP.cpp
+	g++ -oencodeir EncodeIR.o IRP.o
+	strip encodeir
