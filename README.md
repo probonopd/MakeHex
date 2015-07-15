@@ -1,9 +1,9 @@
 # MakeHex
 MakeHex by John Fine. 
 
-This program reads a .IRP file and creates a .HEX file containing the Pronto hex sequences for the IR commands specified by that .IRP file.
+This program reads a .IRP file and creates a .HEX file containing the Pronto hex sequences for the IR commands specified by that .IRP file. See the readme file for more information.
 
-See the readme file for more information.
+Now also contains EncodeIR: This program takes device, subdevice, and function and outputs timing information in raw format.
 
 ## License
 
