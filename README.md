@@ -1,9 +1,12 @@
 # MakeHex
-MakeHex by John Fine. 
+**MakeHex** by John Fine. This program reads a .IRP file and creates a .HEX file containing the Pronto hex sequences for the IR commands specified by that .IRP file. See the readme file for more information.
 
-This program reads a .IRP file and creates a .HEX file containing the Pronto hex sequences for the IR commands specified by that .IRP file. See the readme file for more information.
+Now also contains **EncodeIR**: This program takes device, subdevice, and function and outputs timing information in raw format.
 
-Now also contains EncodeIR: This program takes device, subdevice, and function and outputs timing information in raw format.
+```
+$ ./encodeir NECx1.irp 0 191 1
+4512 4512 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 1692 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 564 1692 564 1692 564 1692 564 1692 564 1692 564 1692 564 1692 564 43992 4512 4512 564 1692 564 95880
+```
 
 ## License
 
