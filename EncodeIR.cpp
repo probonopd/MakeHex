@@ -684,7 +684,7 @@ usage:
 	char *prot = argv[1];
 	int p = -1;
 	for (int i = 0; i < count(protdefs); i++)
-		if (stricmp(prot, protdefs[i].prot) == 0) {
+		if (strcasecmp(prot, protdefs[i].prot) == 0) {
 			p = i;
 			break;
 		}
@@ -706,7 +706,7 @@ usage:
 			prot = "NECx2";
 		// Search again for protocol
 		for (int i = 0; i < count(protdefs); i++)
-			if (stricmp(prot, protdefs[i].prot) == 0) {
+			if (strcasecmp(prot, protdefs[i].prot) == 0) {
 				p = i;
 				break;
 			}
