@@ -346,7 +346,7 @@ bool IRP::readIrpString(char *str)
 		|| m_digits[0] == 0
 		|| m_digits[1] == 0
 		|| m_functions[0] == -1
-		|| m_functions[2] >= 0 && m_functions[2] != m_functions[0] && m_functions[3] != m_functions[1]
+		|| ( m_functions[2] >= 0 && m_functions[2] != m_functions[0] && m_functions[3] != m_functions[1] )
 		)
 	{
 		return false;
