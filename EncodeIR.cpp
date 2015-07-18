@@ -20,6 +20,8 @@
 #include "StdAfx.h"
 #include "IRP.h"
 
+#pragma GCC diagnostic ignored "-Wwrite-strings"
+
 struct protdef {
 	const char *prot;
 	const char *def;
