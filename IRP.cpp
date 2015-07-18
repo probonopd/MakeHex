@@ -215,6 +215,145 @@ bool IRP::readIrpFile(FILE *InFile)
 	return true;
 }
 
+bool IRP::readIrpString(char *str)
+{
+	char *line = strtok(str, "\n");
+	while (line != NULL && line[0] != 0)
+	{
+		strcpy(m_bufr, line);
+		line = m_bufr;
+		
+        Value val;
+
+		// Convert to upper case, compress out blanks and discard comments
+		for (char *l2 = line; *l2 && *l2!='\'' && *l2!='\n'; l2++)
+		{
+			if (*l2 != ' ' && *l2 != '\t')
+				*(line++) = toupper(*l2);
+		}
+		*line = 0;
+
+		// Recognise some Keywords
+
+		if (match("FREQUENCY="))
+		{
+            parseVal(val, m_next);
+			m_frequency = val.m_val;
+		}
+		else if (match("TIMEBASE="))
+		{
+            parseVal(val, m_next);
+			m_timeBase = val.m_val;
+		}
+		else if (match("MESSAGETIME="))
+		{
+            parseVal(val, m_next);
+            if ( val.m_bits == 0 )
+                val.m_val *= m_timeBase;
+			m_messageTime = val.m_val;
+		}
+		else if (m_bufr[0]>='0' && m_bufr[0]<='9' && m_bufr[1]=='=')
+        {
+            m_next=m_bufr+2;
+            setDigit(m_bufr[0]-'0');
+        }
+		else if (m_bufr[0]=='1' && m_bufr[1]>='0' && m_bufr[1]<='5' && m_bufr[2]=='=')
+        {
+            m_next=m_bufr+3;
+            setDigit(m_bufr[1]+(10-'0'));
+        }
+		else if (match("ZERO="))
+		{
+			setDigit(0);
+		}
+		else if (match("ONE="))
+		{
+			setDigit(1);
+		}
+		else if (match("TWO="))
+		{
+			setDigit(2);
+		}
+		else if (match("THREE="))
+		{
+			setDigit(3);
+		}
+		else if (match("PREFIX="))
+		{
+			m_prefix = copy();
+		}
+		else if (match("SUFFIX="))
+		{
+			m_suffix = copy();
+		}
+		else if (match("R-PREFIX="))
+		{
+			m_rPrefix = copy();
+		}
+		else if (match("R-SUFFIX="))
+		{
+			m_rSuffix = copy();
+		}
+		else if (match("FIRSTBIT=MSB"))
+		{
+			m_msb = true;
+		}
+		else if (match("FORM="))
+		{
+			m_form = copy();
+		}
+		else if (match("DEFINE") || match("DEFAULT"))
+		{
+			if (m_next[1] == '=')
+			{	// define x = ...
+				m_next += 2;
+				m_def[m_next[-2]-'A'] = copy();
+			}
+			else if (m_next[0] == '=' && m_next[2]=='A' && m_next[3]=='S')
+			{	// define = x as ...
+				m_next += 4;
+				m_def[m_next[-3]-'A'] = copy();
+			}
+			else if (m_next[1]=='A' && m_next[2]=='S')
+			{	// define x as ...
+				m_next += 3;
+				m_def[m_next[-3]-'A'] = copy();
+			}
+		}
+		else if (match("DEVICE="))
+		{
+			getPair(m_device);
+		}
+		else if (match("FUNCTION="))
+		{
+			getPair(m_functions);
+			if (m_next[0]=='.' && m_next[1]=='.')
+			{
+				m_next += 2;
+				getPair(m_functions+2);
+			}
+		}
+		
+		line = strtok(NULL, "\n");
+	}
+
+	if (m_device[1] >= 0)
+		m_def['S' - 'A'] = 0;
+	if (m_functions[1] >= 0)
+		m_def['N' - 'A'] = 0;
+
+	if (   !m_form
+		|| m_digits[0] == 0
+		|| m_digits[1] == 0
+		|| m_functions[0] == -1
+		|| m_functions[2] >= 0 && m_functions[2] != m_functions[0] && m_functions[3] != m_functions[1]
+		)
+	{
+		return false;
+	}
+	return true;
+}
+
 void IRP::Parse(std::vector<float> &result)
 {
     m_hex.clear();

@@ -44,6 +44,7 @@ public:
 	IRP();
 	~IRP();
 	bool readIrpFile(FILE *InFile);
+	bool readIrpString(char *str);
 	void writeHex(FILE *OutFile);
 	void generate(FILE *OutFile);
 	void generate(int *s, int *r, float *out);
