@@ -7,5 +7,4 @@ The objective of this sketch is to generate raw infrared timings from [IRP notat
 Can you help me fix the following? Pull requests welcome.
 
 * Memory leak (where?)
-* Apparently it is not using the correct device, subdevice, function yet
 * Update to final [IRP notation](http://hifi-remote.com/wiki/index.php?title=IRP_Notation)
