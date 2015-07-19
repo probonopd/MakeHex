@@ -1,4 +1,4 @@
-// This is not quite working yet, and there seems to be a memory leak. 
+// There seems to be a memory leak.
 // Tested with https://github.com/esp8266/Arduino
 // FIXME: Contributions welcome!
 
@@ -28,7 +28,6 @@ struct protdef protdefs[] = {
     "Zero=1,-1\n"
     "Prefix=8,-8\n"
     "Suffix=1,-78\n"
-    "Default S=D\n"
     "R-Suffix=~D:1,1,-170\n"
     "Form=*,D:8,S:8,F:8,~F:8,_;*,_\n"
   },
@@ -40,9 +39,9 @@ void setup() {
 
 void loop() {
 
-  Irp.m_value['D' - 'A'] = 13;
+  Irp.m_value['D' - 'A'] = 0;
   Irp.m_value['S' - 'A'] = 1;
-  Irp.m_value['F' - 'A'] = 1;
+  Irp.m_value['F' - 'A'] = 191;
   Irp.m_value['N' - 'A'] = -1;
 
   strcat(irp, protdefs[0].def);
@@ -57,6 +56,18 @@ void loop() {
     Serial.print(" ");
   }
   Serial.println("");
+
+  for (int i = 0; i < 2 * (sss + rrr); i++)
+  {
+    if (i%2 == 0)
+      Serial.print("+");
+    else
+      Serial.print("-");
+    Serial.print(round(seq[i]));
+    Serial.print(" ");
+  }
+  Serial.println("");
+
   Serial.println("");
   Serial.print("ESP.getFreeHeap() = ");
   Serial.println (ESP.getFreeHeap());
