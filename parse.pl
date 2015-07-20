@@ -5,6 +5,7 @@ $file = basename($ARGV[0]);
 $file =~ s/\.irp//;
 print "\t{ \"$file\",\n";
 open(INPUT, $ARGV[0]);
+$T = 0;
 foreach (<INPUT>) {
 	# remove comments & trim
 	s/'.*$//;
@@ -18,10 +19,13 @@ foreach (<INPUT>) {
 	s/^Define L=.*//i;
 	s/^Define T=.*//i;
 
+	# toggle bit
+	$T = 1 if(/Form=.*T/);
+
 	# skip empty lines
 	next if(/^\s*$/);
 
 	# keep
 	print "\t\t\"$_\\n\"\n";
 }
-print "\t},\n";
+print "\t, $T },\n";

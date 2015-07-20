@@ -25,6 +25,7 @@
 struct protdef {
 	const char *prot;
 	const char *def;
+	const int tgl;
 };
 #define count(ARRAY) (sizeof(ARRAY)/sizeof(*ARRAY))
 
@@ -37,7 +38,7 @@ struct protdef protdefs[] = {
 		"define Y=(1+D+F)^1\n"
 		"First Bit=MSB\n"
 		"Form=7000,-2800,0:1,D:8,F:8,X:8,500,-60m;7000,-2800,1:1,D:8,F:8,Y:8,500,-60m\n"
-	},
+	, 0 },
 	{ "Dell",
 		"Define C=32796\n"
 		"Frequency=36000\n"
@@ -48,7 +49,7 @@ struct protdef protdefs[] = {
 		"Prefix=6,-2,1,-1\n"
 		"First Bit=MSB\n"
 		"Form=;*,M:3,-2,2,C:16,T:1,D:7,F:8\n"
-	},
+	, 1 },
 	{ "Denon-K",
 		"Frequency=37000\n"
 		"Time Base=432\n"
@@ -59,14 +60,14 @@ struct protdef protdefs[] = {
 		"Define C=(D*16)^S^(F*16)^(F:8:4)\n"
 		"Suffix=1,-173\n"
 		"Form=;*,84:8,50:8,0:4,D:4,S:4,F:12,C:8,_\n"
-	},
+	, 0 },
 	{ "Dgtec",
 		"Frequency=38000\n"
 		"Time Base=560\n"
 		"Zero=1,-1\n"
 		"One=1,-3\n"
 		"Form=;16,-8,D:8,F:8,~F:8,1,^108m\n"
-	},
+	, 0 },
 	{ "DishPlayer_Network",
 		"Protocol=DishPlayer_Network\n"
 		"Frequency=57600\n"
@@ -75,7 +76,7 @@ struct protdef protdefs[] = {
 		"One=1,-4\n"
 		"Suffix=1,-15\n"
 		"Form=_;F:-6,S:5,D:5,_\n"
-	},
+	, 0 },
 	{ "Dreambox",
 		"Define A=0\n"
 		"Define B=3908\n"
@@ -104,7 +105,7 @@ struct protdef protdefs[] = {
 		"Define X=0-A-G-J-F-(F:4:4)-(F:4:8)-(F:4:12)\n"
 		"Define Y=X+G-H\n"
 		"Form=A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,X:4,G:4,J:4,F:16,210,-80400;A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,Y:4,H:4,J:4,F:16,210,-80400\n"
-	},
+	, 0 },
 	{ "Furby",
 		"Protocol=Furby\n"
 		"Frequency=40000\n"
@@ -113,7 +114,7 @@ struct protdef protdefs[] = {
 		"One=1,-1,1,-13\n"
 		"Suffix=1,-1,1,-890\n"
 		"Form=;D:5,F:8,_\n"
-	},
+	, 0 },
 	{ "GI4dtv",
 		"Protocol=G.I.4dtv\n"
 		"Frequency=37700\n"
@@ -125,7 +126,7 @@ struct protdef protdefs[] = {
 		"Define B=D*64+F\n"
 		"Define C=B^B*2^B*4^B*16^B*64^B*128^B*1024\n"
 		"Form=;*,B:8,C:1:10,C:3:7,_\n"
-	},
+	, 0 },
 	{ "GI_cable",
 		"Protocol=G.I.cable\n"
 		"Frequency=38400\n"
@@ -134,7 +135,7 @@ struct protdef protdefs[] = {
 		"One=2,-18\n"
 		"Define C=-(D+(F:4)+(F:4:4))\n"
 		"Form=36,-18,F:8,D:4,C:4,2,-120;36,-9,2,-356\n"
-	},
+	, 0 },
 	{ "Jerrold",
 		"Protocol=Jerrold\n"
 		"Frequency=0\n"
@@ -142,7 +143,7 @@ struct protdef protdefs[] = {
 		"One=44,-11000\n"
 		"Suffix=44,-22500\n"
 		"Form=;F:5,_\n"
-	},
+	, 0 },
 	{ "Kaseikyo",
 		"define N=90\n"
 		"define E=1\n"
@@ -156,13 +157,13 @@ struct protdef protdefs[] = {
 		"Define C=D^S^F^E^(S:4:4)^(F:4:4)\n"
 		"Suffix=1,-173\n"
 		"Form=;*,M:8,N:8,X:4,D:4,S:8,F:8,E:4,C:4,_\n"
-	},
+	, 0 },
 	{ "Kramer",
 		"Frequency=38462\n"
 		"Zero=-1m,1m\n"
 		"One=-1m,2m\n"
 		"Form=4m,D:8,-2m,4500u,F:8,-33m\n"
-	},
+	, 0 },
 	{ "Mitsubishi",
 		"Protocol= Mitsubishi\n"
 		"Frequency=32600\n"
@@ -171,7 +172,7 @@ struct protdef protdefs[] = {
 		"One=1,-7\n"
 		"Suffix=1,-80\n"
 		"Form=;D:8,F:8,_\n"
-	},
+	, 0 },
 	{ "NECx1",
 		"Protocol=NECx1\n"
 		"Frequency=38000\n"
@@ -183,7 +184,7 @@ struct protdef protdefs[] = {
 		"Default S=D\n"
 		"R-Suffix=~D:1,1,-170\n"
 		"Form=*,D:8,S:8,F:8,~F:8,_;*,_\n"
-	},
+	, 0 },
 	{ "NECx2",
 		"Protocol=NECx2\n"
 		"Frequency=38000\n"
@@ -194,7 +195,7 @@ struct protdef protdefs[] = {
 		"Suffix=1,-78\n"
 		"Default S=D\n"
 		"Form=;*,D:8,S:8,F:8,~F:8,_\n"
-	},
+	, 0 },
 	{ "Nokia32",
 		"Define X=38\n"
 		"Default S=0\n"
@@ -206,7 +207,7 @@ struct protdef protdefs[] = {
 		"TWO=164,-614\n"
 		"THREE=164,-783\n"
 		"Form=;412,-276,D:8,S:8,X:8,F:8,164,^100m\n"
-	},
+	, 0 },
 	{ "Nokia32single",
 		"Define X=38\n"
 		"Frequency=36000\n"
@@ -216,7 +217,7 @@ struct protdef protdefs[] = {
 		"TWO=164,-614\n"
 		"THREE=164,-783\n"
 		"Form=412,-276,D:8,S:8,X:8,F:8,164,^100m,412,-276,D:8,S:8,(X+128):8,F:8,164,-10m\n"
-	},
+	, 0 },
 	{ "Polycom",
 		"Protocol=Polycom\n"
 		"Frequency=38740\n"
@@ -225,7 +226,7 @@ struct protdef protdefs[] = {
 		"Prefix=2600,-2600\n"
 		"Suffix=580,-60000\n"
 		"Form=*,D:-8,F:-6,0:2,_,*,D:-8,3:-8,_\n"
-	},
+	, 0 },
 	{ "Proton",
 		"Protocol=Proton\n"
 		"Frequency=38000\n"
@@ -235,7 +236,7 @@ struct protdef protdefs[] = {
 		"Prefix=16,-8\n"
 		"Suffix=1,-45\n"
 		"Form=;*,D:8,1,-8,F:8,_\n"
-	},
+	, 0 },
 	{ "Samsung20",
 		"Protocol=Samsung20\n"
 		"Frequency=38400\n"
@@ -244,14 +245,14 @@ struct protdef protdefs[] = {
 		"Zero=1,-1\n"
 		"Default S=0\n"
 		"Form=;8,-8,D:6,S:6,F:8,1,-44\n"
-	},
+	, 0 },
 	{ "Samsung36",
 		"define E=1\n"
 		"Frequency=38000\n"
 		"One=498,-1498\n"
 		"Zero=498,-498\n"
 		"Form=;4488,-4492,d:8,s:8,498,-4498,e:4,f:8,-68,~f:8,498,-59154\n"
-	},
+	, 0 },
 	{ "TViX",
 		"Protocol=NEC\n"
 		"Frequency=38000\n"
@@ -264,7 +265,7 @@ struct protdef protdefs[] = {
 		"R-Suffix=1,-174\n"
 		"Default S=~D\n"
 		"Form=*,D:8,F:8,0:8,0:8,_;*,_\n"
-	},
+	, 0 },
 	{ "Teac-K",
 		"define N=83\n"
 		"Frequency=37900\n"
@@ -274,7 +275,7 @@ struct protdef protdefs[] = {
 		"Default S=0\n"
 		"Define X=M^N^(M:4:4)^(N:4:4)\n"
 		"Form=8,-4,M:8,N:8,X:4,D:4,S:8,F:8,T:8,1,-100;8,-8,1,-100\n"
-	},
+	, 1 },
 	{ "Thomson",
 		"Protocol=Thomson\n"
 		"Frequency=33000\n"
@@ -284,7 +285,7 @@ struct protdef protdefs[] = {
 		"Suffix=1\n"
 		"Message Time=80m\n"
 		"Form=;D:4,T:1,D:1:5,F:6,1\n"
-	},
+	, 1 },
 	{ "Tivo-Nec1",
 		"define U=0\n"
 		"Protocol=TivoNec\n"
@@ -298,7 +299,7 @@ struct protdef protdefs[] = {
 		"R-Suffix=1,-174\n"
 		"Default S=~D\n"
 		"Form=*,D:8,S:8,F:8,U:4,~F:4:4,_;*,_\n"
-	},
+	, 0 },
 	{ "XMP",
 		"Define A=S:4:4\n"
 		"Define B=3908\n"
@@ -327,7 +328,7 @@ struct protdef protdefs[] = {
 		"Define X=0-A-G-J-F-(F:4:4)-(F:4:8)-(F:4:12)\n"
 		"Define Y=X+G-H\n"
 		"Form=A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,X:4,G:4,J:4,F:8,F:8:8,210,-80400;A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,Y:4,H:4,J:4,F:8,F:8:8,210,-80400\n"
-	},
+	, 0 },
 	{ "aiwa",
 		"Protocol=Aiwa\n"
 		"Frequency=38000\n"
@@ -339,7 +340,7 @@ struct protdef protdefs[] = {
 		"R-Prefix=16,-8\n"
 		"R-Suffix=1,-165\n"
 		"Form=*,D:8,S:5,~D:8,~S:5,F:8,~F:8,_;*,_\n"
-	},
+	, 0 },
 	{ "async",
 		"Protocol=Async\n"
 		"Frequency=43600\n"
@@ -350,7 +351,7 @@ struct protdef protdefs[] = {
 		"Suffix=-1,1,-9\n"
 		"First Bit=LSB\n"
 		"Form=*,1:8,1:2,D:8,1:2,F:8,1:2,F:8,1:2,1:8,_\n"
-	},
+	, 0 },
 	{ "blaupunkt",
 		"Protocol=Blaupunkt\n"
 		"Frequency=30500\n"
@@ -360,7 +361,7 @@ struct protdef protdefs[] = {
 		"Prefix=1,-5\n"
 		"Suffix=-27\n"
 		"Form=*,1023:10,_;*,1:1,F:7,D:2,_\n"
-	},
+	, 0 },
 	{ "denon",
 		"Protocol=Denon\n"
 		"Frequency=37917\n"
@@ -369,7 +370,7 @@ struct protdef protdefs[] = {
 		"One=1,-7\n"
 		"Suffix=1,-165\n"
 		"Form=;D:5,F:8,0:2,_,D:5,~F:8,3:2,_\n"
-	},
+	, 0 },
 	{ "emerson",
 		"Protocol=EMERSON\n"
 		"Frequency=36700\n"
@@ -379,7 +380,7 @@ struct protdef protdefs[] = {
 		"Prefix=4,-4\n"
 		"Suffix=1,-39\n"
 		"Form=;*,D:6,F:6,~D:6,~F:6,_\n"
-	},
+	, 0 },
 	{ "f12",
 		"Protocol=F12\n"
 		"Frequency=38000\n"
@@ -387,7 +388,7 @@ struct protdef protdefs[] = {
 		"Zero=1,-3\n"
 		"One=3,-1\n"
 		"Form=D:3,S:1,F:8,-80,D:3,S:1,F:8,-80\n"
-	},
+	, 0 },
 	{ "fujitsu",
 		"Define E=0\n"
 		"Define X=0\n"
@@ -399,7 +400,7 @@ struct protdef protdefs[] = {
 		"Prefix=8,-4\n"
 		"Suffix=1,-110\n"
 		"Form=;*,20:8,99:8,X:4,E:4,D:8,S:8,F:8,_\n"
-	},
+	, 0 },
 	{ "iPod",
 		"Protocol=NEC\n"
 		"Frequency=38000\n"
@@ -412,7 +413,7 @@ struct protdef protdefs[] = {
 		"R-Suffix=1,-174\n"
 		"Default S=~D\n"
 		"Form=*,D:8,S:8,F:8,63:8,_;*,_\n"
-	},
+	, 0 },
 	{ "imonpc",
 		"Frequency=39700\n"
 		"First Bit=MSB\n"
@@ -424,7 +425,7 @@ struct protdef protdefs[] = {
 		"2=(A-B),-(A+B),(A-B),-(A+B)\n"
 		"3=(A-B),-(3*A+B)\n"
 		"Form=;F:8,~F:8\n"
-	},
+	, 0 },
 	{ "jvc",
 		"Protocol=JVC\n"
 		"Frequency=37900\n"
@@ -433,7 +434,7 @@ struct protdef protdefs[] = {
 		"One=1,-3\n"
 		"Prefix=16,-8\n"
 		"Form=*;D:8,F:8,1,^88\n"
-	},
+	, 0 },
 	{ "jvc_two_frames",
 		"Frequency=37900\n"
 		"Time Base=527\n"
@@ -441,7 +442,7 @@ struct protdef protdefs[] = {
 		"One=1,-3\n"
 		"Prefix=16,-8\n"
 		"Form=*,D:8,F:8,1,^88;D:8,F:8,1,^88\n"
-	},
+	, 0 },
 	{ "lumagen",
 		"Frequency=38000\n"
 		"Time Base=416\n"
@@ -451,7 +452,7 @@ struct protdef protdefs[] = {
 		"define X=F^(F:4:4)\n"
 		"define C=X^(X:1:1)^(X:1:2)^(X:1:3)\n"
 		"Form=;D:4,~C:1,F:7,1,-26\n"
-	},
+	, 0 },
 	{ "mce",
 		"Frequency=36000\n"
 		"Time Base=444\n"
@@ -460,7 +461,7 @@ struct protdef protdefs[] = {
 		"One=1,-1\n"
 		"First Bit=MSB\n"
 		"Form=;6,-2,1:1,M:3,-2,2,128:8,S:8,T:1,D:7,F:8\n"
-	},
+	, 1 },
 	{ "nec1",
 		"Protocol=NEC\n"
 		"Frequency=38000\n"
@@ -473,7 +474,7 @@ struct protdef protdefs[] = {
 		"R-Suffix=1,-174\n"
 		"Default S=~D\n"
 		"Form=*,D:8,S:8,F:8,~F:8,_;*,_\n"
-	},
+	, 0 },
 	{ "nec2",
 		"Protocol=NEC2\n"
 		"Frequency=38000\n"
@@ -484,7 +485,7 @@ struct protdef protdefs[] = {
 		"Suffix=1,-78\n"
 		"Default S=~D\n"
 		"Form=;*,D:8,S:8,F:8,~F:8,_\n"
-	},
+	, 0 },
 	{ "panasonic",
 		"Protocol= Panasonic\n"
 		"Frequency=37000\n"
@@ -496,7 +497,7 @@ struct protdef protdefs[] = {
 		"Define C=D^S^F\n"
 		"Suffix=1,-173\n"
 		"Form=;*,2:8,32:8,D:8,S:8,F:8,C:8,_\n"
-	},
+	, 0 },
 	{ "panasonic2",
 		"Define X=0\n"
 		"Frequency=37000\n"
@@ -508,7 +509,7 @@ struct protdef protdefs[] = {
 		"Define C=D^S^X^F\n"
 		"Suffix=1,-173\n"
 		"Form=;*,2:8,32:8,D:8,S:8,X:8,F:8,C:8,_\n"
-	},
+	, 0 },
 	{ "pioneer",
 		"Protocol=Pioneer\n"
 		"Frequency=40000\n"
@@ -519,7 +520,7 @@ struct protdef protdefs[] = {
 		"Suffix=1,-78\n"
 		"Default S=~D\n"
 		"Form=;*,D:8,S:8,F:8,~F:8,_\n"
-	},
+	, 0 },
 	{ "pioneer2",
 		"Define P=86\n"
 		"Protocol=Pioneer2\n"
@@ -530,7 +531,7 @@ struct protdef protdefs[] = {
 		"Prefix=16,-8\n"
 		"Suffix=1,-78\n"
 		"Form=;*,D:8,~D:8,P:8,~P:8,_,*,S:8,~S:8,F:8,~F:8,_\n"
-	},
+	, 0 },
 	{ "rc5",
 		"Protocol=RC5\n"
 		"Frequency=36000\n"
@@ -541,7 +542,7 @@ struct protdef protdefs[] = {
 		"Prefix=1\n"
 		"First Bit=MSB\n"
 		"Form=;*,~F:1:6,T:1,D:5,F:6\n"
-	},
+	, 1 },
 	{ "rc5odd",
 		"Protocol=RC5\n"
 		"Frequency=36000\n"
@@ -552,7 +553,7 @@ struct protdef protdefs[] = {
 		"Prefix=1\n"
 		"First Bit=MSB\n"
 		"Form=;*,~F:1:6,1:1,D:5,F:6\n"
-	},
+	, 0 },
 	{ "rc5x",
 		"Protocol=RC5x\n"
 		"Frequency=36000\n"
@@ -562,7 +563,7 @@ struct protdef protdefs[] = {
 		"One=-1,1\n"
 		"First Bit=MSB\n"
 		"Form=;1,~S:1:6,T:1,D:5,-4,S:6,F:6\n"
-	},
+	, 1 },
 	{ "rc6-M-L",
 		"Protocol=RC6\n"
 		"Frequency=36000\n"
@@ -574,7 +575,7 @@ struct protdef protdefs[] = {
 		"First Bit=MSB\n"
 		"Default S=0\n"
 		"Form=;*,M:3,(4*T-2),(2-4*T),D:8,S:(L-16),F:8\n"
-	},
+	, 1 },
 	{ "rc6",
 		"Protocol=RC6\n"
 		"Frequency=36000\n"
@@ -585,7 +586,7 @@ struct protdef protdefs[] = {
 		"Prefix=6,-2,1,-1\n"
 		"First Bit=MSB\n"
 		"Form=;*,M:3,(4*T-2),(2-4*T),D:8,F:8\n"
-	},
+	, 1 },
 	{ "rca",
 		"Protocol=RCA\n"
 		"Frequency=58000\n"
@@ -596,7 +597,7 @@ struct protdef protdefs[] = {
 		"Suffix=1,-15\n"
 		"First Bit=MSB\n"
 		"Form=;*,D:4,F:8,~D:4,~F:8,_\n"
-	},
+	, 0 },
 	{ "recs80_45",
 		"Frequency=38000\n"
 		"Zero=170,-4900\n"
@@ -604,7 +605,7 @@ struct protdef protdefs[] = {
 		"MESSAGETIME=121000\n"
 		"First Bit=MSB\n"
 		"Form=;1:1,T:1,D:3,F:6,170\n"
-	},
+	, 1 },
 	{ "recs80_68",
 		"Frequency=36400\n"
 		"Zero=170,-5580\n"
@@ -612,7 +613,7 @@ struct protdef protdefs[] = {
 		"MESSAGETIME=138000\n"
 		"First Bit=MSB\n"
 		"Form=;1:1,T:1,D:3,F:6,170\n"
-	},
+	, 1 },
 	{ "russound",
 		"Frequency=38400\n"
 		"Time Base=601\n"
@@ -623,7 +624,7 @@ struct protdef protdefs[] = {
 		"First Bit=MSB\n"
 		"Define C=7*(F:2:6)+5*(F:2:4)+3*(F:2:2)+(F:2)\n"
 		"Form=10,-2,D:4,F:8,C:4,1,-50;5,-2,D:4,F:8,C:4,1,-50\n"
-	},
+	, 0 },
 	{ "sagem",
 		"Frequency=56000\n"
 		"Time Base=250\n"
@@ -631,7 +632,7 @@ struct protdef protdefs[] = {
 		"One=1,-1\n"
 		"First Bit=MSB\n"
 		"Form=1:1,D:6,S:7,0:1,F:8,-350;1:1,D:6,S:7,1:1,F:8,-350\n"
-	},
+	, 0 },
 	{ "sharp",
 		"Protocol=SHARP\n"
 		"Frequency=37917\n"
@@ -640,7 +641,7 @@ struct protdef protdefs[] = {
 		"One=1,-7\n"
 		"Suffix=1,-165\n"
 		"Form=;D:5,F:8,1:2,_,D:5,~F:8,2:2,_\n"
-	},
+	, 0 },
 	{ "streamzap",
 		"Frequency=59000\n"
 		"Time Base=889\n"
@@ -649,7 +650,7 @@ struct protdef protdefs[] = {
 		"Message Time=114\n"
 		"First Bit=MSB\n"
 		"Form=;1:1,~F:1:6,T:1,D:6,F:6\n"
-	},
+	, 1 },
 	{ "x10ir",
 		"Protocol=X10IR\n"
 		"Frequency=40000\n"
@@ -659,28 +660,29 @@ struct protdef protdefs[] = {
 		"Form=;*,F:5,~F:5,_\n"
 		"Prefix=8,-8\n"
 		"suffix=23,-8\n"
-	}
+	, 0 }
 };
 
 int main(int argc, char** argv)
 {
-	if (argc != 5)
+	if (argc != 5 && argc != 6)
 	{
-usage:
-		printf("Usage: encodeir <protocol> <device> <subdevice> <function>\n");
+		printf("Usage: encodeir <protocol> <device> <subdevice> <function> [<toggle>]\n");
 		return -1;
 	}
 
 	char irp[1024] = "";
 
-	// Handle D, S, F
+	// Handle D, S, F, T
 	int D = atoi(argv[2]);
 	int S = atoi(argv[3]);
 	int F = atoi(argv[4]);
+	int T = 0;
+	if (argc == 6) T = atoi(argv[5]);
 	if (S >= 0)
-		sprintf(irp, "Device=%d.%d\nFunction=%d\n", D, S, F);
+		sprintf(irp, "Device=%d.%d\nFunction=%d\nDefine T=%d\n", D, S, F, T);
 	else
-		sprintf(irp, "Device=%d\nFunction=%d\n", D, F);
+		sprintf(irp, "Device=%d\nFunction=%d\nDefine T=%d\n", D, F, T);
 
 	// Search for protocol
 	char *prot = argv[1];
@@ -719,7 +721,7 @@ usage:
 	}
 	strcat(irp, protdefs[p].def);
 	
-	// Encode
+	// Parse
 	IRP Irp;
 	if (!Irp.readIrpString(irp)) {
 		printf ("Error: Invalid IRP\n");
