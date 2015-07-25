@@ -30,6 +30,39 @@ struct protdef {
 #define count(ARRAY) (sizeof(ARRAY)/sizeof(*ARRAY))
 
 struct protdef protdefs[] = {
+	{ "aiwa",
+		"Protocol=Aiwa\n"
+		"Frequency=38000\n"
+		"Time Base=550\n"
+		"One=1,-3\n"
+		"Zero=1,-1\n"
+		"Prefix=16,-8\n"
+		"Suffix=1,-42\n"
+		"R-Prefix=16,-8\n"
+		"R-Suffix=1,-165\n"
+		"Form=*,D:8,S:5,~D:8,~S:5,F:8,~F:8,_;*,_\n"
+	, 0 },
+	{ "async",
+		"Protocol=Async\n"
+		"Frequency=43600\n"
+		"Time Base=833\n"
+		"Zero=1\n"
+		"One=-1\n"
+		"Prefix=1,-9,1\n"
+		"Suffix=-1,1,-9\n"
+		"First Bit=LSB\n"
+		"Form=*,1:8,1:2,D:8,1:2,F:8,1:2,F:8,1:2,1:8,_\n"
+	, 0 },
+	{ "blaupunkt",
+		"Protocol=Blaupunkt\n"
+		"Frequency=30500\n"
+		"Time Base=500\n"
+		"Zero=-1,1\n"
+		"One=1,-1\n"
+		"Prefix=1,-5\n"
+		"Suffix=-27\n"
+		"Form=*,1023:10,_;*,1:1,F:7,D:2,_\n"
+	, 0 },
 	{ "DAC4",
 		"Frequency=38000\n"
 		"Zero=500,-1000\n"
@@ -60,6 +93,15 @@ struct protdef protdefs[] = {
 		"Define C=(D*16)^S^(F*16)^(F:8:4)\n"
 		"Suffix=1,-173\n"
 		"Form=;*,84:8,50:8,0:4,D:4,S:4,F:12,C:8,_\n"
+	, 0 },
+	{ "denon",
+		"Protocol=Denon\n"
+		"Frequency=37917\n"
+		"Time Base=264\n"
+		"Zero=1,-3\n"
+		"One=1,-7\n"
+		"Suffix=1,-165\n"
+		"Form=;D:5,F:8,0:2,_,D:5,~F:8,3:2,_\n"
 	, 0 },
 	{ "Dgtec",
 		"Frequency=38000\n"
@@ -106,6 +148,36 @@ struct protdef protdefs[] = {
 		"Define Y=X+G-H\n"
 		"Form=A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,X:4,G:4,J:4,F:16,210,-80400;A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,Y:4,H:4,J:4,F:16,210,-80400\n"
 	, 0 },
+	{ "emerson",
+		"Protocol=EMERSON\n"
+		"Frequency=36700\n"
+		"Time Base=872\n"
+		"Zero=1,-1\n"
+		"One=1,-3\n"
+		"Prefix=4,-4\n"
+		"Suffix=1,-39\n"
+		"Form=;*,D:6,F:6,~D:6,~F:6,_\n"
+	, 0 },
+	{ "f12",
+		"Protocol=F12\n"
+		"Frequency=38000\n"
+		"Time Base=425\n"
+		"Zero=1,-3\n"
+		"One=3,-1\n"
+		"Form=D:3,S:1,F:8,-80,D:3,S:1,F:8,-80\n"
+	, 0 },
+	{ "fujitsu",
+		"Define E=0\n"
+		"Define X=0\n"
+		"Protocol= Fujitsu\n"
+		"Frequency=38000\n"
+		"Time Base=400\n"
+		"Zero=1,-1\n"
+		"One=1,-3\n"
+		"Prefix=8,-4\n"
+		"Suffix=1,-110\n"
+		"Form=;*,20:8,99:8,X:4,E:4,D:8,S:8,F:8,_\n"
+	, 0 },
 	{ "Furby",
 		"Protocol=Furby\n"
 		"Frequency=40000\n"
@@ -136,6 +208,31 @@ struct protdef protdefs[] = {
 		"Define C=-(D+(F:4)+(F:4:4))\n"
 		"Form=36,-18,F:8,D:4,C:4,2,-120;36,-9,2,-356\n"
 	, 0 },
+	{ "imonpc",
+		"Frequency=39700\n"
+		"First Bit=MSB\n"
+		"Define A=840\n"
+		"Define B=300\n"
+		"Message Time=200m\n"
+		"0=(3*A-B),-(A+B)\n"
+		"1=(2*A-B),-(2*A+B)\n"
+		"2=(A-B),-(A+B),(A-B),-(A+B)\n"
+		"3=(A-B),-(3*A+B)\n"
+		"Form=;F:8,~F:8\n"
+	, 0 },
+	{ "iPod",
+		"Protocol=NEC\n"
+		"Frequency=38000\n"
+		"Time Base=564\n"
+		"One=1,-3\n"
+		"Zero=1,-1\n"
+		"Prefix=16,-8\n"
+		"Suffix=1,-78\n"
+		"R-Prefix=16,-4\n"
+		"R-Suffix=1,-174\n"
+		"Default S=~D\n"
+		"Form=*,D:8,S:8,F:8,63:8,_;*,_\n"
+	, 0 },
 	{ "Jerrold",
 		"Protocol=Jerrold\n"
 		"Frequency=0\n"
@@ -143,6 +240,23 @@ struct protdef protdefs[] = {
 		"One=44,-11000\n"
 		"Suffix=44,-22500\n"
 		"Form=;F:5,_\n"
+	, 0 },
+	{ "jvc",
+		"Protocol=JVC\n"
+		"Frequency=37900\n"
+		"Time Base=527\n"
+		"Zero=1,-1\n"
+		"One=1,-3\n"
+		"Prefix=16,-8\n"
+		"Form=*;D:8,F:8,1,^88\n"
+	, 0 },
+	{ "jvc_two_frames",
+		"Frequency=37900\n"
+		"Time Base=527\n"
+		"Zero=1,-1\n"
+		"One=1,-3\n"
+		"Prefix=16,-8\n"
+		"Form=*,D:8,F:8,1,^88;D:8,F:8,1,^88\n"
 	, 0 },
 	{ "Kaseikyo",
 		"define N=90\n"
@@ -164,6 +278,25 @@ struct protdef protdefs[] = {
 		"One=-1m,2m\n"
 		"Form=4m,D:8,-2m,4500u,F:8,-33m\n"
 	, 0 },
+	{ "lumagen",
+		"Frequency=38000\n"
+		"Time Base=416\n"
+		"First Bit=MSB\n"
+		"Zero=1,-6\n"
+		"One=1,-12\n"
+		"define X=F^(F:4:4)\n"
+		"define C=X^(X:1:1)^(X:1:2)^(X:1:3)\n"
+		"Form=;D:4,~C:1,F:7,1,-26\n"
+	, 0 },
+	{ "mce",
+		"Frequency=36000\n"
+		"Time Base=444\n"
+		"Message Time=106m\n"
+		"Zero=-1,1\n"
+		"One=1,-1\n"
+		"First Bit=MSB\n"
+		"Form=;6,-2,1:1,M:3,-2,2,128:8,S:8,T:1,D:7,F:8\n"
+	, 1 },
 	{ "Mitsubishi",
 		"Protocol= Mitsubishi\n"
 		"Frequency=32600\n"
@@ -172,6 +305,30 @@ struct protdef protdefs[] = {
 		"One=1,-7\n"
 		"Suffix=1,-80\n"
 		"Form=;D:8,F:8,_\n"
+	, 0 },
+	{ "nec1",
+		"Protocol=NEC\n"
+		"Frequency=38000\n"
+		"Time Base=564\n"
+		"One=1,-3\n"
+		"Zero=1,-1\n"
+		"Prefix=16,-8\n"
+		"Suffix=1,-78\n"
+		"R-Prefix=16,-4\n"
+		"R-Suffix=1,-174\n"
+		"Default S=~D\n"
+		"Form=*,D:8,S:8,F:8,~F:8,_;*,_\n"
+	, 0 },
+	{ "nec2",
+		"Protocol=NEC2\n"
+		"Frequency=38000\n"
+		"Time Base=564\n"
+		"One=1,-3\n"
+		"Zero=1,-1\n"
+		"Prefix=16,-8\n"
+		"Suffix=1,-78\n"
+		"Default S=~D\n"
+		"Form=;*,D:8,S:8,F:8,~F:8,_\n"
 	, 0 },
 	{ "NECx1",
 		"Protocol=NECx1\n"
@@ -218,274 +375,6 @@ struct protdef protdefs[] = {
 		"THREE=164,-783\n"
 		"Form=412,-276,D:8,S:8,X:8,F:8,164,^100m,412,-276,D:8,S:8,(X+128):8,F:8,164,-10m\n"
 	, 0 },
-	{ "Polycom",
-		"Protocol=Polycom\n"
-		"Frequency=38740\n"
-		"Zero=880,-1200\n"
-		"One=580,-880\n"
-		"Prefix=2600,-2600\n"
-		"Suffix=580,-60000\n"
-		"Form=*,D:-8,F:-6,0:2,_,*,D:-8,3:-8,_\n"
-	, 0 },
-	{ "Proton",
-		"Protocol=Proton\n"
-		"Frequency=38000\n"
-		"Time Base=500\n"
-		"Zero=1,-1\n"
-		"One=1,-3\n"
-		"Prefix=16,-8\n"
-		"Suffix=1,-45\n"
-		"Form=;*,D:8,1,-8,F:8,_\n"
-	, 0 },
-	{ "Samsung20",
-		"Protocol=Samsung20\n"
-		"Frequency=38400\n"
-		"Time Base=564\n"
-		"One=1,-3\n"
-		"Zero=1,-1\n"
-		"Default S=0\n"
-		"Form=;8,-8,D:6,S:6,F:8,1,-44\n"
-	, 0 },
-	{ "Samsung36",
-		"define E=1\n"
-		"Frequency=38000\n"
-		"One=498,-1498\n"
-		"Zero=498,-498\n"
-		"Form=;4488,-4492,d:8,s:8,498,-4498,e:4,f:8,-68,~f:8,498,-59154\n"
-	, 0 },
-	{ "TViX",
-		"Protocol=NEC\n"
-		"Frequency=38000\n"
-		"Time Base=564\n"
-		"One=1,-3\n"
-		"Zero=1,-1\n"
-		"Prefix=16,-8\n"
-		"Suffix=1,-78\n"
-		"R-Prefix=16,-4\n"
-		"R-Suffix=1,-174\n"
-		"Default S=~D\n"
-		"Form=*,D:8,F:8,0:8,0:8,_;*,_\n"
-	, 0 },
-	{ "Teac-K",
-		"define N=83\n"
-		"Frequency=37900\n"
-		"Time Base=432\n"
-		"Zero=1,-1\n"
-		"One=1,-3\n"
-		"Default S=0\n"
-		"Define X=M^N^(M:4:4)^(N:4:4)\n"
-		"Form=8,-4,M:8,N:8,X:4,D:4,S:8,F:8,T:8,1,-100;8,-8,1,-100\n"
-	, 1 },
-	{ "Thomson",
-		"Protocol=Thomson\n"
-		"Frequency=33000\n"
-		"Time Base=500\n"
-		"Zero=1,-4\n"
-		"One=1,-9\n"
-		"Suffix=1\n"
-		"Message Time=80m\n"
-		"Form=;D:4,T:1,D:1:5,F:6,1\n"
-	, 1 },
-	{ "Tivo-Nec1",
-		"define U=0\n"
-		"Protocol=TivoNec\n"
-		"Frequency=38000\n"
-		"Time Base=564\n"
-		"One=1,-3\n"
-		"Zero=1,-1\n"
-		"Prefix=16,-8\n"
-		"Suffix=1,-78\n"
-		"R-Prefix=16,-4\n"
-		"R-Suffix=1,-174\n"
-		"Default S=~D\n"
-		"Form=*,D:8,S:8,F:8,U:4,~F:4:4,_;*,_\n"
-	, 0 },
-	{ "XMP",
-		"Define A=S:4:4\n"
-		"Define B=3908\n"
-		"Define G=0\n"
-		"Define H=8\n"
-		"Define J=S\n"
-		"Frequency=38000\n"
-		"First Bit=MSB\n"
-		"0=210,-760\n"
-		"1=210,-896\n"
-		"2=210,-1032\n"
-		"3=210,-1168\n"
-		"4=210,-1304\n"
-		"5=210,-1440\n"
-		"6=210,-1576\n"
-		"7=210,-1712\n"
-		"8=210,-1848\n"
-		"9=210,-1984\n"
-		"10=210,-2120\n"
-		"11=210,-2256\n"
-		"12=210,-2392\n"
-		"13=210,-2528\n"
-		"14=210,-2664\n"
-		"15=210,-2800\n"
-		"Define C=0-A-S-B-(B:4:4)-(B:4:8)-D-(D:4:4)\n"
-		"Define X=0-A-G-J-F-(F:4:4)-(F:4:8)-(F:4:12)\n"
-		"Define Y=X+G-H\n"
-		"Form=A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,X:4,G:4,J:4,F:8,F:8:8,210,-80400;A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,Y:4,H:4,J:4,F:8,F:8:8,210,-80400\n"
-	, 0 },
-	{ "aiwa",
-		"Protocol=Aiwa\n"
-		"Frequency=38000\n"
-		"Time Base=550\n"
-		"One=1,-3\n"
-		"Zero=1,-1\n"
-		"Prefix=16,-8\n"
-		"Suffix=1,-42\n"
-		"R-Prefix=16,-8\n"
-		"R-Suffix=1,-165\n"
-		"Form=*,D:8,S:5,~D:8,~S:5,F:8,~F:8,_;*,_\n"
-	, 0 },
-	{ "async",
-		"Protocol=Async\n"
-		"Frequency=43600\n"
-		"Time Base=833\n"
-		"Zero=1\n"
-		"One=-1\n"
-		"Prefix=1,-9,1\n"
-		"Suffix=-1,1,-9\n"
-		"First Bit=LSB\n"
-		"Form=*,1:8,1:2,D:8,1:2,F:8,1:2,F:8,1:2,1:8,_\n"
-	, 0 },
-	{ "blaupunkt",
-		"Protocol=Blaupunkt\n"
-		"Frequency=30500\n"
-		"Time Base=500\n"
-		"Zero=-1,1\n"
-		"One=1,-1\n"
-		"Prefix=1,-5\n"
-		"Suffix=-27\n"
-		"Form=*,1023:10,_;*,1:1,F:7,D:2,_\n"
-	, 0 },
-	{ "denon",
-		"Protocol=Denon\n"
-		"Frequency=37917\n"
-		"Time Base=264\n"
-		"Zero=1,-3\n"
-		"One=1,-7\n"
-		"Suffix=1,-165\n"
-		"Form=;D:5,F:8,0:2,_,D:5,~F:8,3:2,_\n"
-	, 0 },
-	{ "emerson",
-		"Protocol=EMERSON\n"
-		"Frequency=36700\n"
-		"Time Base=872\n"
-		"Zero=1,-1\n"
-		"One=1,-3\n"
-		"Prefix=4,-4\n"
-		"Suffix=1,-39\n"
-		"Form=;*,D:6,F:6,~D:6,~F:6,_\n"
-	, 0 },
-	{ "f12",
-		"Protocol=F12\n"
-		"Frequency=38000\n"
-		"Time Base=425\n"
-		"Zero=1,-3\n"
-		"One=3,-1\n"
-		"Form=D:3,S:1,F:8,-80,D:3,S:1,F:8,-80\n"
-	, 0 },
-	{ "fujitsu",
-		"Define E=0\n"
-		"Define X=0\n"
-		"Protocol= Fujitsu\n"
-		"Frequency=38000\n"
-		"Time Base=400\n"
-		"Zero=1,-1\n"
-		"One=1,-3\n"
-		"Prefix=8,-4\n"
-		"Suffix=1,-110\n"
-		"Form=;*,20:8,99:8,X:4,E:4,D:8,S:8,F:8,_\n"
-	, 0 },
-	{ "iPod",
-		"Protocol=NEC\n"
-		"Frequency=38000\n"
-		"Time Base=564\n"
-		"One=1,-3\n"
-		"Zero=1,-1\n"
-		"Prefix=16,-8\n"
-		"Suffix=1,-78\n"
-		"R-Prefix=16,-4\n"
-		"R-Suffix=1,-174\n"
-		"Default S=~D\n"
-		"Form=*,D:8,S:8,F:8,63:8,_;*,_\n"
-	, 0 },
-	{ "imonpc",
-		"Frequency=39700\n"
-		"First Bit=MSB\n"
-		"Define A=840\n"
-		"Define B=300\n"
-		"Message Time=200m\n"
-		"0=(3*A-B),-(A+B)\n"
-		"1=(2*A-B),-(2*A+B)\n"
-		"2=(A-B),-(A+B),(A-B),-(A+B)\n"
-		"3=(A-B),-(3*A+B)\n"
-		"Form=;F:8,~F:8\n"
-	, 0 },
-	{ "jvc",
-		"Protocol=JVC\n"
-		"Frequency=37900\n"
-		"Time Base=527\n"
-		"Zero=1,-1\n"
-		"One=1,-3\n"
-		"Prefix=16,-8\n"
-		"Form=*;D:8,F:8,1,^88\n"
-	, 0 },
-	{ "jvc_two_frames",
-		"Frequency=37900\n"
-		"Time Base=527\n"
-		"Zero=1,-1\n"
-		"One=1,-3\n"
-		"Prefix=16,-8\n"
-		"Form=*,D:8,F:8,1,^88;D:8,F:8,1,^88\n"
-	, 0 },
-	{ "lumagen",
-		"Frequency=38000\n"
-		"Time Base=416\n"
-		"First Bit=MSB\n"
-		"Zero=1,-6\n"
-		"One=1,-12\n"
-		"define X=F^(F:4:4)\n"
-		"define C=X^(X:1:1)^(X:1:2)^(X:1:3)\n"
-		"Form=;D:4,~C:1,F:7,1,-26\n"
-	, 0 },
-	{ "mce",
-		"Frequency=36000\n"
-		"Time Base=444\n"
-		"Message Time=106m\n"
-		"Zero=-1,1\n"
-		"One=1,-1\n"
-		"First Bit=MSB\n"
-		"Form=;6,-2,1:1,M:3,-2,2,128:8,S:8,T:1,D:7,F:8\n"
-	, 1 },
-	{ "nec1",
-		"Protocol=NEC\n"
-		"Frequency=38000\n"
-		"Time Base=564\n"
-		"One=1,-3\n"
-		"Zero=1,-1\n"
-		"Prefix=16,-8\n"
-		"Suffix=1,-78\n"
-		"R-Prefix=16,-4\n"
-		"R-Suffix=1,-174\n"
-		"Default S=~D\n"
-		"Form=*,D:8,S:8,F:8,~F:8,_;*,_\n"
-	, 0 },
-	{ "nec2",
-		"Protocol=NEC2\n"
-		"Frequency=38000\n"
-		"Time Base=564\n"
-		"One=1,-3\n"
-		"Zero=1,-1\n"
-		"Prefix=16,-8\n"
-		"Suffix=1,-78\n"
-		"Default S=~D\n"
-		"Form=;*,D:8,S:8,F:8,~F:8,_\n"
-	, 0 },
 	{ "panasonic",
 		"Protocol= Panasonic\n"
 		"Frequency=37000\n"
@@ -510,6 +399,17 @@ struct protdef protdefs[] = {
 		"Suffix=1,-173\n"
 		"Form=;*,2:8,32:8,D:8,S:8,X:8,F:8,C:8,_\n"
 	, 0 },
+	{ "Panasonic_Old",
+		"Protocol=Panasonic_Old\n"
+		"Frequency=57600\n"
+		"Time Base=833\n"
+		"Message Time=100m\n"
+		"Zero=1,-1\n"
+		"One=1,-3\n"
+		"Prefix=4,-4\n"
+		"Suffix=1\n"
+		"Form=;*,D:5,F:6,~D:5,~F:6,_\n"
+	, 0 },
 	{ "pioneer",
 		"Protocol=Pioneer\n"
 		"Frequency=40000\n"
@@ -531,6 +431,25 @@ struct protdef protdefs[] = {
 		"Prefix=16,-8\n"
 		"Suffix=1,-78\n"
 		"Form=;*,D:8,~D:8,P:8,~P:8,_,*,S:8,~S:8,F:8,~F:8,_\n"
+	, 0 },
+	{ "Polycom",
+		"Protocol=Polycom\n"
+		"Frequency=38740\n"
+		"Zero=880,-1200\n"
+		"One=580,-880\n"
+		"Prefix=2600,-2600\n"
+		"Suffix=580,-60000\n"
+		"Form=*,D:-8,F:-6,0:2,_,*,D:-8,3:-8,_\n"
+	, 0 },
+	{ "Proton",
+		"Protocol=Proton\n"
+		"Frequency=38000\n"
+		"Time Base=500\n"
+		"Zero=1,-1\n"
+		"One=1,-3\n"
+		"Prefix=16,-8\n"
+		"Suffix=1,-45\n"
+		"Form=;*,D:8,1,-8,F:8,_\n"
 	, 0 },
 	{ "rc5",
 		"Protocol=RC5\n"
@@ -633,6 +552,22 @@ struct protdef protdefs[] = {
 		"First Bit=MSB\n"
 		"Form=1:1,D:6,S:7,0:1,F:8,-350;1:1,D:6,S:7,1:1,F:8,-350\n"
 	, 0 },
+	{ "Samsung20",
+		"Protocol=Samsung20\n"
+		"Frequency=38400\n"
+		"Time Base=564\n"
+		"One=1,-3\n"
+		"Zero=1,-1\n"
+		"Default S=0\n"
+		"Form=;8,-8,D:6,S:6,F:8,1,-44\n"
+	, 0 },
+	{ "Samsung36",
+		"define E=1\n"
+		"Frequency=38000\n"
+		"One=498,-1498\n"
+		"Zero=498,-498\n"
+		"Form=;4488,-4492,d:8,s:8,498,-4498,e:4,f:8,-68,~f:8,498,-59154\n"
+	, 0 },
 	{ "sharp",
 		"Protocol=SHARP\n"
 		"Frequency=37917\n"
@@ -641,6 +576,36 @@ struct protdef protdefs[] = {
 		"One=1,-7\n"
 		"Suffix=1,-165\n"
 		"Form=;D:5,F:8,1:2,_,D:5,~F:8,2:2,_\n"
+	, 0 },
+	{ "Sony12",
+		"Protocol=Sony12\n"
+		"Frequency=40000\n"
+		"Time Base=600\n"
+		"One=2,-1\n"
+		"Zero=1,-1\n"
+		"Prefix=4,-1\n"
+		"Message Time=45m\n"
+		"Form=;*,f:7,d:5\n"
+	, 0 },
+	{ "Sony15",
+		"Protocol=Sony15\n"
+		"Frequency=40000\n"
+		"Time Base=600\n"
+		"One=2,-1\n"
+		"Zero=1,-1\n"
+		"Prefix=4,-1\n"
+		"Message Time=45m\n"
+		"Form=;*,f:7,d:8\n"
+	, 0 },
+	{ "Sony20",
+		"Protocol=Sony20\n"
+		"Frequency=40000\n"
+		"Time Base=600\n"
+		"One=2,-1\n"
+		"Zero=1,-1\n"
+		"Prefix=4,-1\n"
+		"Message Time=45m\n"
+		"Form=;*,f:7,d:5,s:8\n"
 	, 0 },
 	{ "streamzap",
 		"Frequency=59000\n"
@@ -651,6 +616,53 @@ struct protdef protdefs[] = {
 		"First Bit=MSB\n"
 		"Form=;1:1,~F:1:6,T:1,D:6,F:6\n"
 	, 1 },
+	{ "Teac-K",
+		"define N=83\n"
+		"Frequency=37900\n"
+		"Time Base=432\n"
+		"Zero=1,-1\n"
+		"One=1,-3\n"
+		"Default S=0\n"
+		"Define X=M^N^(M:4:4)^(N:4:4)\n"
+		"Form=8,-4,M:8,N:8,X:4,D:4,S:8,F:8,T:8,1,-100;8,-8,1,-100\n"
+	, 1 },
+	{ "Thomson",
+		"Protocol=Thomson\n"
+		"Frequency=33000\n"
+		"Time Base=500\n"
+		"Zero=1,-4\n"
+		"One=1,-9\n"
+		"Suffix=1\n"
+		"Message Time=80m\n"
+		"Form=;D:4,T:1,D:1:5,F:6,1\n"
+	, 1 },
+	{ "Tivo-Nec1",
+		"define U=0\n"
+		"Protocol=TivoNec\n"
+		"Frequency=38000\n"
+		"Time Base=564\n"
+		"One=1,-3\n"
+		"Zero=1,-1\n"
+		"Prefix=16,-8\n"
+		"Suffix=1,-78\n"
+		"R-Prefix=16,-4\n"
+		"R-Suffix=1,-174\n"
+		"Default S=~D\n"
+		"Form=*,D:8,S:8,F:8,U:4,~F:4:4,_;*,_\n"
+	, 0 },
+	{ "TViX",
+		"Protocol=NEC\n"
+		"Frequency=38000\n"
+		"Time Base=564\n"
+		"One=1,-3\n"
+		"Zero=1,-1\n"
+		"Prefix=16,-8\n"
+		"Suffix=1,-78\n"
+		"R-Prefix=16,-4\n"
+		"R-Suffix=1,-174\n"
+		"Default S=~D\n"
+		"Form=*,D:8,F:8,0:8,0:8,_;*,_\n"
+	, 0 },
 	{ "x10ir",
 		"Protocol=X10IR\n"
 		"Frequency=40000\n"
@@ -660,6 +672,35 @@ struct protdef protdefs[] = {
 		"Form=;*,F:5,~F:5,_\n"
 		"Prefix=8,-8\n"
 		"suffix=23,-8\n"
+	, 0 },
+	{ "XMP",
+		"Define A=S:4:4\n"
+		"Define B=3908\n"
+		"Define G=0\n"
+		"Define H=8\n"
+		"Define J=S\n"
+		"Frequency=38000\n"
+		"First Bit=MSB\n"
+		"0=210,-760\n"
+		"1=210,-896\n"
+		"2=210,-1032\n"
+		"3=210,-1168\n"
+		"4=210,-1304\n"
+		"5=210,-1440\n"
+		"6=210,-1576\n"
+		"7=210,-1712\n"
+		"8=210,-1848\n"
+		"9=210,-1984\n"
+		"10=210,-2120\n"
+		"11=210,-2256\n"
+		"12=210,-2392\n"
+		"13=210,-2528\n"
+		"14=210,-2664\n"
+		"15=210,-2800\n"
+		"Define C=0-A-S-B-(B:4:4)-(B:4:8)-D-(D:4:4)\n"
+		"Define X=0-A-G-J-F-(F:4:4)-(F:4:8)-(F:4:12)\n"
+		"Define Y=X+G-H\n"
+		"Form=A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,X:4,G:4,J:4,F:8,F:8:8,210,-80400;A:4,C:4,S:4,B:12,D:8,210,-13800,A:4,Y:4,H:4,J:4,F:8,F:8:8,210,-80400\n"
 	, 0 }
 };
 

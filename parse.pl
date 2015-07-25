@@ -1,8 +1,8 @@
 #!/bin/perl
-#for file in *.irp; do parse.pl $file; done
+#for file in $(find . -iname "*.irp"); do parse.pl $file; done
 use File::Basename;
 $file = basename($ARGV[0]);
-$file =~ s/\.irp//;
+$file =~ s/\.irp//i;
 print "\t{ \"$file\",\n";
 open(INPUT, $ARGV[0]);
 $T = 0;
