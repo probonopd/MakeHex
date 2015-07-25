@@ -1,0 +1,9 @@
+Protocol=RCA-38
+Frequency=38700
+Time Base=460
+Zero=1,-2
+One=1,-4
+Prefix=8,-8
+Suffix=1,-16
+First Bit=MSB
+Form=;*,D:4,F:8,~D:4,~F:8,_
