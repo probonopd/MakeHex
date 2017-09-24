@@ -17,8 +17,8 @@
 // modify or distribute this program.
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h"
-#include "irp.h"
+#include "StdAfx.h"
+#include "IRP.h"
 
 int main(int argc, char** argv)
 {

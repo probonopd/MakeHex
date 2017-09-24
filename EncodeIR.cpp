@@ -1,7 +1,7 @@
 #pragma GCC diagnostic ignored "-Wwrite-strings"
 
-#include "stdafx.h"
-#include "irp.h"
+#include "StdAfx.h"
+#include "IRP.h"
 
 struct protdef {
 	const char *prot;
